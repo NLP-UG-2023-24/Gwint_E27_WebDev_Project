@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Explorer</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <header>
+        <h1>Word Explorer</h1>
+    </header>
+    <form id="word-form">
+        <input type="text" id="keyword" placeholder="Enter a word">
+        <button type="button" onclick="getWordData()">Search</button>
+    </form>
+    <main>
+        <section>
+            <h2>Definition</h2>
+            <p id="definition"></p>
+        </section>
+        <section>
+            <h2>Synonyms</h2>
+            <p id="synonyms"></p>
+        </section>
+        <section>
+            <h2>Antonyms</h2>
+            <p id="antonyms"></p>
+        </section>
+    </main>
+</body>
+</html>
