@@ -1,9 +1,9 @@
 
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        header { background: rgb(106, 106, 180); color: white; text-align: center; padding: 1rem; }
+        header { background: rgb(106, 106, 181); color: white; text-align: center; padding: 1rem; }
         main { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; padding: 20px; }
         section { border: 1px solid #ddd; padding: 10px; border-radius: 5px; }
-        section h2 { text-align: center; color: rgb(106, 106, 180); }
+        section h2 { text-align: center; color: rgb(106, 106, 181); }
         form { text-align: center; margin-bottom: 20px; margin-top:10px; }
         input[type="text"] { padding: 10px; font-size: 1rem; width: 70%; }
-        button { padding: 10px 15px; font-size: 1rem; background-color: rgb(106, 106, 180); color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button { padding: 10px 15px; font-size: 1rem; background-color: rgb(106, 106, 181); color: white; border: none; border-radius: 5px; cursor: pointer; }
