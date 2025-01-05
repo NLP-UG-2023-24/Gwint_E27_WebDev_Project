@@ -1,6 +1,7 @@
 body { 
     font-family: Arial, sans-serif; 
-    margin: 0; padding: 0; 
+    margin: 0; 
+    padding: 0; 
 }
 
 header {
@@ -10,7 +11,9 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
-    position: relative;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
     
 header h1 {
@@ -28,6 +31,12 @@ main {
     padding: 20px; 
 }
 
+.results_header{
+}
+
+.results{
+}
+
 section { 
     border: 1px solid #ddd; 
     padding: 10px; 
@@ -43,6 +52,7 @@ form {
     text-align: center; 
     margin-bottom: 20px; 
     margin-top: 10px; 
+    padding-top: 100px;
 }
 
 input[type="text"] { 
@@ -77,11 +87,7 @@ nav ul li a {
     text-decoration: none;
     color: white; 
     font-size: 1rem; 
-    font-weight: bold; 
-}
-
-@media (min-width: 800px){
-
+    font-weight: bold;
 }
 
 @media (min-width: 550px) and (max-width: 800px){
@@ -90,54 +96,42 @@ nav ul li a {
     }
 
     header h1 {
-        margin: 0;
-        font-size: 1.5rem;
-        position: absolute;
-        left: 30%;
+        left: 20%;
         transform: translateX(0%);
     } 
 
+    input[type="text"] { 
+        padding: 10px; 
+        font-size: 1rem; 
+        width: 60%; 
+    }
+
     nav ul {
-        list-style: none; 
-        display: flex;
         gap: 10px; 
-        margin: 0; 
-        padding: 0; 
-    }
-    
-    nav ul li a {
-        text-decoration: none;
-        color: white; 
-        font-size: 0.8rem; 
-        font-weight: bold; 
-    }
+    }    
 }
 
 @media (max-width: 550px){
+    html {
+        transform: scale(0.7);
+        transform-origin: top left;
+        width: 142.5%;
+    }
+
     header {
         align-items: left;
     }
 
     header h1 {
-        margin: 0;
-        font-size: 1.2rem;
-        position: absolute;
         left: 10%;
         transform: translateX(0%);
     }    
 
     nav ul {
-        list-style: none; 
-        display: flex;
         gap: 5px; 
-        margin: 0; 
-        padding: 0; 
     }
-    
-    nav ul li a {
-        text-decoration: none;
-        color: white; 
-        font-size: 0.8rem; 
-        font-weight: bold; 
+
+    form{
+        padding-top: 80px;
     }
 }
