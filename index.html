@@ -17,27 +17,40 @@
                 <li><a href="#sources">Sources</a></li>
             </ul>
         </nav>
-        </header>
+    </header>
     <form id="word-form">
         <input type="text" id="keyword" placeholder="Enter a word">
         <button type="button">Search</button>
         <button type="button">Random</button>
     </form>
     <main>
-        <section>
+
+        <section class="results_header" id="def_header">
             <h2>Definition</h2>
-            <p id="definition"></p>
         </section>
-        <section>
+
+        <section class="results_header" id="syn_header">
             <h2>Synonyms</h2>
-            <p id="synonyms"></p>
         </section>
-        <section>
+
+        <section class="results_header" id="ant_header">
             <h2>Antonyms</h2>
-            <p id="antonyms"></p>
         </section>
+
+        <section class="results" id="definition">
+            <p>definition</p>
+        </section>
+
+        <section class="results" id="synonyms">
+            <p>synonyms</p>
+        </section>
+
+        <section class="results" id="antonyms">
+            <p>antonyms</p>
+        </section>
+
     </main>
-        <footer>
+    <footer>
         <p>&copy; 2025 Word Checker. All rights reserved.</p>
         <p>Your go-to tool for exploring words and meanings.</p>
     </footer>
