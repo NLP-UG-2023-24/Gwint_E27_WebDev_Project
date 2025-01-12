@@ -25,27 +25,38 @@ header h1 {
 }
 
 main { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr 1fr; 
     gap: 10px; 
     padding: 20px; 
 }
 
+.container{
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
 .results_header{
+    width: 22%;
+    padding: 10px;
+    margin: 10px;
 }
 
 .results{
+    width: 58%;
+    margin: 10px;
 }
 
 section { 
     border: 1px solid #ddd; 
-    padding: 10px; 
+    padding: 1rem; 
     border-radius: 5px; 
 }
 
 section h2 { 
     text-align: center; 
     color: rgb(106, 106, 180); 
+    font-size: 24px;
 }
 
 form { 
@@ -100,6 +111,12 @@ nav ul li a {
         transform: translateX(0%);
     } 
 
+    section h2 { 
+        text-align: center; 
+        color: rgb(106, 106, 180); 
+        font-size: 20px;
+    }
+
     input[type="text"] { 
         padding: 10px; 
         font-size: 1rem; 
@@ -108,7 +125,16 @@ nav ul li a {
 
     nav ul {
         gap: 10px; 
-    }    
+    }   
+    
+    .results_header{
+        padding: 10px;
+        margin: 5px;
+    }
+    
+    .results{
+        margin: 5px;
+    }
 }
 
 @media (max-width: 550px){
@@ -133,5 +159,16 @@ nav ul li a {
 
     form{
         padding-top: 80px;
+    }
+
+    .results_header{
+        width: 100%;
+        padding: 5px;
+        margin: 5px;
+    }
+    
+    .results{
+        width: 100%;
+        margin: 5px;
     }
 }
