@@ -21,7 +21,7 @@ header {
     box-sizing: border-box;
     overflow: hidden;
 }
-
+    
 header h1 {
     margin: 0;
     font-size: 1.5rem;
@@ -37,9 +37,9 @@ main {
 
 .container {
     padding: 2rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .results_header {
@@ -70,6 +70,11 @@ section h2 {
     text-align: center; 
     color: rgb(106, 106, 180); 
     font-size: 24px;
+}
+
+#about {
+    padding: 1rem;
+    margin: 2rem;
 }
 
 form { 
@@ -122,7 +127,7 @@ nav ul {
     list-style: none; 
     display: flex;
     justify-content: flex-end;
-    gap: 1rem;
+    gap: 0.5rem;
     margin: 0; 
     padding: 0; 
 }
@@ -132,7 +137,7 @@ nav ul li a {
     color: white; 
     font-size: 1rem; 
     font-weight: bold;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border-radius: 3px;
     transition: color 0.3s ease, background-color 0.3s ease;
 }
@@ -163,31 +168,54 @@ footer p {
 }
 
 /* Media Queries */
-@media (min-width: 550px) and (max-width: 800px) {
+@media (min-width: 600px) and (max-width: 800px) {
+    header {
+        align-items: left;
+    }
+
     header h1 {
         left: 20%;
         transform: translateX(0%);
     }
 
+    section h2 { 
+        text-align: center; 
+        color: rgb(106, 106, 180); 
+        font-size: 20px;
+    }
+
     input[type="text"] { 
+        padding: 10px; 
+        font-size: 1rem; 
         width: 60%; 
     }
 
     nav ul {
-        gap: 10px; 
-    }
-
+        gap: 0rem;
+        padding: 0rem;
+    }   
+    
     .results_header {
         padding: 10px;
         margin: 5px;
     }
-
+    
     .results {
         margin: 5px;
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
+    html {
+        transform: scale(0.7);
+        transform-origin: top left;
+        width: 142.5%;
+    }
+
+    header {
+        align-items: left;
+    }
+
     header h1 {
         left: 10%;
         transform: translateX(0%);
@@ -195,6 +223,12 @@ footer p {
 
     nav ul {
         gap: 5px; 
+    }
+
+    input[type="text"] {
+        margin: 0.3rem; 
+        font-size: 1rem; 
+        width: 60%; 
     }
 
     form {
