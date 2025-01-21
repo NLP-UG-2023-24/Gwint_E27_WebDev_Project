@@ -72,6 +72,15 @@ section h2 {
     font-size: 24px;
 }
 
+#sources_div {
+    margin-left: 3rem;
+}
+
+#sources_div h2 {
+    color: rgb(106, 106, 180);
+    margin-top: 6rem;
+}
+
 #about {
     padding: 1rem;
     margin: 2rem;
