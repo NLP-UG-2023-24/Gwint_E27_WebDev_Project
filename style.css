@@ -1,9 +1,9 @@
-body { 
-    font-family: Arial, sans-serif; 
+body {
+    font-family: Arial, sans-serif;
     line-height: 1.6;
     font-size: 16px;
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
     color: #333;
 }
 
@@ -13,26 +13,79 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2rem;
-    position: fixed;
+    padding: 1rem;
+    position: sticky; /* Or fixed, adjust as needed */
     top: 0;
     width: 100%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    overflow: hidden;
+    z-index: 10;
 }
-    
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+#logo {
+    width: 80px;
+    height: auto;
+    display: block;
+}
+
 header h1 {
     margin: 0;
     font-size: 1.5rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
-main { 
-    gap: 10px; 
-    padding: 20px; 
+main {
+    padding: 20px;
+    padding-top: 70px; /* Adjust for fixed/sticky header */
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding-top: 20px; /* Adjust as needed */
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: rgb(106, 106, 180);
+    outline: none;
+    box-shadow: 0 0 5px rgba(106, 106, 180, 0.5);
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: rgb(106, 106, 180);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    margin: 0 5px; /* Add some space between buttons */
+}
+
+button:hover {
+    background-color: #6c6cb4;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 .container {
@@ -56,95 +109,38 @@ main {
     background: #fff;
     border-radius: 5px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-section { 
-    border: 1px solid #ddd; 
-    padding: 1rem; 
-    border-radius: 5px; 
-    background: #f9f9f9;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-section h2 { 
-    text-align: center; 
-    color: rgb(106, 106, 180); 
-    font-size: 24px;
-}
-
-#sources_div {
-    margin-left: 3rem;
-}
-
-#sources_div h2 {
-    color: rgb(106, 106, 180);
-    margin-top: 6rem;
+    padding: 1rem;
+    box-sizing: border-box;
 }
 
 #about {
+    width: 100%;
     padding: 1rem;
-    margin: 2rem;
-}
-
-form { 
-    text-align: center; 
-    margin-bottom: 20px; 
-    margin-top: 10px; 
-    padding-top: 100px;
-}
-
-input[type="text"] { 
-    padding: 10px; 
-    font-size: 1rem; 
-    width: 70%; 
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
-}
-
-input[type="text"]:focus {
-    border-color: rgb(106, 106, 180);
-    outline: none;
-    box-shadow: 0 0 5px rgba(106, 106, 180, 0.5);
-}
-
-button { 
-    padding: 10px 15px; 
-    font-size: 1rem; 
-    background-color: rgb(106, 106, 180); 
-    color: white; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    transition: transform 0.2s ease, background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #6c6cb4;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-button:active {
-    transform: scale(0.95);
+    margin: 2rem 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
 nav {
-    margin-left: auto; 
+    margin-left: auto;
 }
-    
+
 nav ul {
-    list-style: none; 
+    list-style: none;
     display: flex;
     justify-content: flex-end;
     gap: 0.5rem;
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: white; 
-    font-size: 1rem; 
+    color: white;
+    font-size: 1rem;
     font-weight: bold;
     padding: 0.5rem 0.5rem;
     border-radius: 3px;
@@ -177,76 +173,56 @@ footer p {
 }
 
 /* Media Queries */
-@media (min-width: 600px) and (max-width: 800px) {
-    header {
-        align-items: left;
+@media (max-width: 768px) {
+    #logo {
+        width: 60px;
     }
 
     header h1 {
-        left: 20%;
-        transform: translateX(0%);
-    }
-
-    section h2 { 
-        text-align: center; 
-        color: rgb(106, 106, 180); 
-        font-size: 20px;
-    }
-
-    input[type="text"] { 
-        padding: 10px; 
-        font-size: 1rem; 
-        width: 60%; 
-    }
-
-    nav ul {
-        gap: 0rem;
-        padding: 0rem;
-    }   
-    
-    .results_header {
-        padding: 10px;
-        margin: 5px;
-    }
-    
-    .results {
-        margin: 5px;
-    }
-}
-
-@media (max-width: 600px) {
-    html {
-        transform: scale(0.7);
-        transform-origin: top left;
-        width: 142.5%;
-    }
-
-    header {
-        align-items: left;
-    }
-
-    header h1 {
-        left: 10%;
-        transform: translateX(0%);
-    }    
-
-    nav ul {
-        gap: 5px; 
-    }
-
-    input[type="text"] {
-        margin: 0.3rem; 
-        font-size: 1rem; 
-        width: 60%; 
-    }
-
-    form {
-        padding-top: 80px;
+        font-size: 1.2rem;
     }
 
     .results_header, .results {
         width: 100%;
-        padding: 5px;
-        margin: 5px;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding-top: 20px;
+    }
+
+    input[type="text"] {
+        width: 90%; /* Full width on small screens */
+        margin-bottom: 10px; /* Add margin below input */
+    }
+
+    button {
+        margin: 0 5px; /* Maintain button spacing */
+    }
+
+    .results_header, .results {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        box-sizing: border-box; /* Ensure padding is included in width */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack navigation vertically */
+        align-items: center; /* Center the items */
+    }
+
+    nav li {
+        margin: 5px 0; /* Add space between list items */
     }
 }
