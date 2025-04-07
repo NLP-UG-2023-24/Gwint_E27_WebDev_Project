@@ -115,7 +115,7 @@ button:active {
 
 #about {
     width: 100%;
-    padding: 1rem;
+    padding: 2rem;
     margin: 2rem 0;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -225,4 +225,7 @@ footer p {
     nav li {
         margin: 5px 0; /* Add space between list items */
     }
+}
+.results_header h2 {
+    text-align: center;
 }
