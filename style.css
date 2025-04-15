@@ -1,15 +1,50 @@
+:root{
+    --body-text-color: #333;
+    --accent-color: rgb(106, 106, 180);
+    --background-color: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --results-header-color: rgb(235, 235, 255);
+    --header-text-color: white;
+    --input-border-color: #ccc;
+    --box-shadow-color: rgba(106, 106, 180, 0.5);
+    --mode-button-color: black;
+    --box-bg-color: #f9f9f9;
+    --menu-hover-bg-color: ;
+    /* rgba(255, 255, 255, 0.477); */
+    --menu-hover-text-color: #ccc;
+    /* rgb(106, 106, 180); */
+}
+
+.dark_mode{
+    --body-text-color: white;
+    --accent-color: rgb(106, 106, 180);
+    --background-color: rgb(45, 46, 46);
+    --shadow-color: rgba(255,255, 255, 0.2);
+    --results-header-color: rgb(235, 235, 255);
+    --header-text-color: white;
+    --input-border-color: #ccc;
+    --box-shadow-color: rgba(106, 106, 180, 0.5);
+    --mode-button-color: black;
+    --box-bg-color: #f9f9f9;
+    --menu-hover-bg-color: ;
+    /* rgba(255, 255, 255, 0.477); */
+    --menu-hover-text-color: #cccccc;
+    /* rgb(106, 106, 180); */
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     font-size: 16px;
     margin: 0;
     padding: 0;
-    color: #333;
+    color: var(--body-text-color);
+    background-color: var(--background-color);
 }
 
 header {
-    background: rgb(106, 106, 180);
-    color: white;
+    background: var(--accent-color);
+    color: var(--header-text-color);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,7 +52,7 @@ header {
     position: sticky; /* Or fixed, adjust as needed */
     top: 0;
     width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px var(--shadow-color);
     box-sizing: border-box;
     z-index: 10;
 }
@@ -43,6 +78,7 @@ header h1 {
 main {
     padding: 20px;
     padding-top: 70px; /* Adjust for fixed/sticky header */
+    color: var(--body-text-color);
 }
 
 form {
@@ -56,22 +92,22 @@ input[type="text"] {
     padding: 10px;
     font-size: 1rem;
     width: 70%;
-    border: 1px solid #ccc;
+    border: 1px solid var(--input-border-color);
     border-radius: 4px;
     transition: border-color 0.3s ease;
 }
 
 input[type="text"]:focus {
-    border-color: rgb(106, 106, 180);
+    border-color: var(--accent-color);
     outline: none;
-    box-shadow: 0 0 5px rgba(106, 106, 180, 0.5);
+    box-shadow: 0 0 5px var(--box-shadow-color);
 }
 
 button {
     padding: 10px 15px;
     font-size: 1rem;
-    background-color: rgb(106, 106, 180);
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--header-text-color);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -81,15 +117,15 @@ button {
 
 #mode_button{
     margin: 10px;
-    background-color: white;
-    border: black solid 1px;
-    color: black;
+    background-color: var(--background-color);
+    border: var(--mode-button-color) solid 1px;
+    color: var(--mode-button-color);
     font-size: 80%;
 }
 
 button:hover {
-    background-color: #6c6cb4;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    background-color: var(--accent-color);
+    box-shadow: 0px 4px 6px var(--box-shadow-color);
 }
 
 button:active {
@@ -107,7 +143,7 @@ button:active {
     width: 22%;
     padding: 10px;
     margin: 10px;
-    background: rgb(235, 235, 255);
+    background: var(--results-header-color);
     border-radius: 5px;
 }
 
@@ -116,7 +152,7 @@ button:active {
     margin: 10px;
     background: #fff;
     border-radius: 5px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 4px var(--box-shadow-color);
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -125,10 +161,10 @@ button:active {
     width: 100%;
     padding: 2rem;
     margin: 2rem 0;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 5px;
-    background: #f9f9f9;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--box-bg-color);
+    box-shadow: 0px 2px 4px var(--box-shadow-color);
     box-sizing: border-box;
 }
 
@@ -147,8 +183,8 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: white;
-    font-size: 1rem;
+    color: var(--header-text-color);
+    font-size: 1remhead;
     font-weight: bold;
     padding: 0.5rem 0.5rem;
     border-radius: 3px;
@@ -156,13 +192,13 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ddd;
-    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--menu-hover-text-color);
+    background-color: var(--menu-hover-bg-color);
 }
 
 footer {
-    background: rgb(106, 106, 180);
-    color: white;
+    background: var(--accent-color);
+    color: var(--header-text-color);
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
@@ -174,10 +210,10 @@ footer p {
 }
 
 /* Accessibility Enhancements */
-:focus {
+/* :focus {
     outline: 3px dashed #858589;
     outline-offset: 3px;
-}
+} */
 
 /* Media Queries */
 @media (max-width: 768px) {
