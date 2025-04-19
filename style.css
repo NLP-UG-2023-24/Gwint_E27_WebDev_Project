@@ -325,3 +325,8 @@ footer p {
 .team-card p {
     color: #6c757d;
 }
+
+.site-title {
+    color: var(--header-text-color);
+    text-decoration: none;
+}
