@@ -304,17 +304,15 @@ footer p {
     transform: translateY(-5px);
 }
 
-.avatar-placeholder {
+.team-avatar {
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-color: #e9ecef;
+    object-fit: cover;
+    object-position: top;
     margin: 0 auto 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-    color: #6c757d;
+    display: block;
+    border: 3px solid var(--accent-color);
 }
 
 .team-card h3 {
