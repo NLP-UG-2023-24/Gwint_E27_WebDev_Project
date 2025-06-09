@@ -46,19 +46,7 @@ function fetchSynonymsAntonyms(){
     })
 }
 
-keywordInput.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        searchButton.click();
-    }
-});
-
-searchButton.addEventListener("click", () => {
-    fetchSynonymsAntonyms();
-    fetchDefinition();
-});
-
-
+// definitions
 
 function fetchDefinition() {
     const inputValue = keywordInput.value.trim().replaceAll(" ", "+");
@@ -91,3 +79,17 @@ function fetchDefinition() {
         definition.innerText = "Error fetching definition.";
     });
 }
+
+// event listeners
+
+keywordInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        searchButton.click();
+    }
+});
+
+searchButton.addEventListener("click", () => {
+    fetchSynonymsAntonyms();
+    fetchDefinition();
+});
