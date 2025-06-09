@@ -70,7 +70,15 @@ function fetchDefinition() {
     .then(response => {
         console.log("Definition response:", response);
         if (response.definition) {
-            definition.innerText = response.definition;
+            definition.innerHTML = "";
+
+            const parts = response.definition.split(/(?<=[.;:])\s+/);
+
+            parts.forEach(part => {
+                const p = document.createElement("p");
+                p.innerText = part.trim();
+                definition.appendChild(p);
+            });
         } else {
             definition.innerText = "No definition found.";
         }
