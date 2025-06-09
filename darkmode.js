@@ -8,11 +8,13 @@ const enableDarkmode = () => {
 
 const disableDarkmode = () => {
     document.body.classList.remove('dark_mode')
-    localStorage.setItem('dark_mode', null)
+    localStorage.setItem('dark_mode', 'inactive')
 }
 
-if (darkmode === 'active'){
-    enableDarkmode()
+if (darkmode === 'active') {
+    enableDarkmode();
+} else {
+    disableDarkmode(); 
 }
 
 themeSwitch.addEventListener('click', () => {
