@@ -4,12 +4,8 @@ const searchButton = document.getElementById("search_button");
 const keywordInput = document.getElementById("keyword");
 const definition = document.getElementById("definition");
 
-
 const APINinjasKey = "cXRL+1hx7MFwH/CcnJNt6w==ifTKw1ZncXBSDZ7Q";
 const SynAntURL = "https://api.api-ninjas.com/v1/thesaurus?word=";
-
-const word = 'happy';
-
 
 function fetchSynonymsAntonyms(){
 
@@ -27,28 +23,35 @@ function fetchSynonymsAntonyms(){
     .then(response => {
         console.log(response);
 
-        console.log(response.synonyms);
+        // synonyms
+
         synonyms_list = response.synonyms;
-        synonyms.innerHTML = ""; // usuń elementy <li> z listy aliasów
-
-        for (let i = 0; i < synonyms_list.length; i++){
-            const newLi = document.createElement("li");
-            newLi.innerText = synonyms_list[i];
-            synonyms.appendChild(newLi);
+        synonyms_text = "";
+        for (let i = 0; i < synonyms_list.length-1; i++){
+            synonyms_text += synonyms_list[i] + ", ";
         }
+        synonyms_text += synonyms_list[synonyms_list.length -1];
+        synonyms.innerText = synonyms_text;
 
-        console.log(response.antonyms);
+        // antonyms
+
         antonyms_list = response.antonyms;
-        antonyms.innerHTML = ""; // usuń elementy <li> z listy aliasów
-
-        for (let i = 0; i < antonyms_list.length; i++){
-            const newLi = document.createElement("li");
-            newLi.innerText = antonyms_list[i];
-            antonyms.appendChild(newLi);
+        antonyms_text = "";
+        for (let i = 0; i < antonyms_list.length-1; i++){
+            antonyms_text += antonyms_list[i] + ", ";
         }
+        antonyms_text += antonyms_list[antonyms_list.length -1];
+        antonyms.innerText = antonyms_text;
 
     })
 }
+
+keywordInput.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        searchButton.click();
+    }
+});
 
 searchButton.addEventListener("click", () => {
     fetchSynonymsAntonyms();
@@ -72,7 +75,7 @@ function fetchDefinition() {
         if (response.definition) {
             definition.innerHTML = "";
 
-            const parts = response.definition.split(/(?<=[.;:])\s+/);
+            const parts = response.definition.split(/(?=\d+\.)/);
 
             parts.forEach(part => {
                 const p = document.createElement("p");
@@ -84,7 +87,7 @@ function fetchDefinition() {
         }
     })
     .catch(error => {
-        console.error("Błąd podczas pobierania definicji:", error);
+        console.error("Error fetching definition:", error);
         definition.innerText = "Error fetching definition.";
     });
 }
