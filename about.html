@@ -4,54 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Word Checker</title>
+
+    <link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
+    <link rel="icon" href="favicons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg">
+    <link rel="manifest" href="favicons/site.webmanifest">
+
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <header>
-        <a href="index.html" class="site-title"><h1>Word Checker</h1></a>
+        <a href="index.html" class="site-title">
+            <img src="assets/logo.png" alt="Word Checker Logo" id="site-logo">
+        </a>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="team.html">Team</a></li>
                 <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-    </header>
-    <main>
-        <div id="about_div">
-            <h2>About Word Checker</h2>
-            <p>
-                Word Checker is a versatile tool designed to enhance your understanding of words by providing 
-                detailed definitions, synonyms, and antonyms. Whether you're writing, studying, or exploring the 
-                richness of language, our tool offers a simple and effective way to expand your vocabulary and 
-                comprehension.
-            </p>
-            <p>
-                This project showcases the integration of modern web technologies, including:
-            </p>
-            <ul>
-                <li><strong>HTML:</strong> For structuring the website.</li>
-                <li><strong>CSS:</strong> For styling and layout design.</li>
-                <li><strong>JavaScript:</strong> To create interactive features.</li>
-                <li><strong>API:</strong> External data sources to fetch definitions, synonyms, and antonyms dynamically.</li>
-            </ul>
-            <p>
-                The Word Checker project is in progress, with future enhancements planned, including improved API 
-                integration and additional features like pronunciation guides and usage examples.
-            </p>
+        <div class="header-controls">
+            <div class="accessibility-menu">
+                <button id="accessibility-button" class="control-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="accessibility-options">Accessibility</button>
+                <div id="accessibility-options" class="accessibility-dropdown" role="menu">
+                    <button role="menuitem" type="button" id="high-contrast-button">High Contrast</button>
+                    <button role="menuitem" type="button" id="grayscale-button">Grayscale</button>
+                    <button role="menuitem" type="button" id="enlarge-font-button">Enlarge Font</button>
+                    <button role="menuitem" type="button" id="reset-accessibility-button">Reset</button>
+                </div>
+            </div>
+            <button type="button" id="mode_button" class="control-button"></button>
         </div>
-        <div id="sources_div">
-            <h2>Sources:</h2>
-            <ul>
-                <li>API 1: <a href="#api1">link to API 1</a></li>
-                <li>API 2: <a href="#api2">link to API 2</a></li>
-                <li>API 3: <a href="#api3">link to API 3</a></li>
-            </ul>
+    </header>
+
+    <main>
+        <div id="about_div" class="about_container">
+             <section id="about">
+                <h2>About Word Checker</h2>
+                <p>Word Checker is a versatile tool designed to enhance your understanding of words by providing detailed definitions, synonyms, and antonyms. Whether you're writing, studying, or exploring the richness of language, our tool offers a simple and effective way to expand your vocabulary and comprehension.</p>
+                <p>This project showcases the integration of modern web technologies, including: HTML for structure, CSS for design, and JavaScript for interactive features and API requests.</p>
+            </section>
+        </div>
+        <div id="sources_div" class="about_container">
+            <section id="about">
+                <h2>Sources</h2>
+                <p>This project relies on the following external APIs to provide its data:</p>
+                 <ul>
+                    <li><strong>API-Ninjas:</strong> Used for the <a href="https://api-ninjas.com/api/dictionary" target="_blank" rel="noopener noreferrer">Dictionary</a> and <a href="https://api-ninjas.com/api/thesaurus" target="_blank" rel="noopener noreferrer">Thesaurus</a> functionalities.</li>
+                    <li><strong>Random Word API:</strong> Used for the "Random" button to fetch a <a href="https://random-word-api.herokuapp.com/" target="_blank" rel="noopener noreferrer">random word</a>.</li>
+                 </ul>
+            </section>
         </div>
     </main>
+
     <footer>
         <p>&copy; 2025 Word Checker. All rights reserved.</p>
+        <p>View on <a href="https://github.com/your-username/your-repo-name" target="_blank" rel="noopener noreferrer">GitHub</a></p>
         <p>Your go-to tool for exploring words and meanings.</p>
     </footer>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
