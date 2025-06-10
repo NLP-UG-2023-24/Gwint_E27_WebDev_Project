@@ -12,9 +12,7 @@
 
     <link rel="stylesheet" href="style.css"/>
 </head>
-
 <body>
-
     <header>
         <a href="index.html" class="site-title"><h1>Word Checker</h1></a>
         <nav>
@@ -24,7 +22,20 @@
                 <li><a href="about.html">About</a></li>
             </ul>
         </nav>
-        <button type="button" id="mode_button">Mode</button>
+        <div class="header-controls">
+            <div class="accessibility-menu">
+                <button id="accessibility-button" class="control-button" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="accessibility-options">
+                    Accessibility
+                </button>
+                <div id="accessibility-options" class="accessibility-dropdown" role="menu">
+                    <button role="menuitem" type="button" id="high-contrast-button">High Contrast</button>
+                    <button role="menuitem" type="button" id="grayscale-button">Grayscale</button>
+                    <button role="menuitem" type="button" id="enlarge-font-button">Enlarge Font</button>
+                    <button role="menuitem" type="button" id="reset-accessibility-button">Reset</button>
+                </div>
+            </div>
+            <button type="button" id="mode_button" class="control-button">Mode</button>
+        </div>
     </header>
 
     <main>
@@ -33,38 +44,18 @@
             <button type="button" id="search_button">Search</button>
             <button type="button" id="random_button">Random</button>
         </form>
-
         <div class="container">
-            <section class="results_header">
-                <h2>Definition</h2>
-            </section>
-            <section class="results">
-                <p id="definition">Enter a word above and click "Search" to see its definition.</p>
-            </section>
-
-            <section class="results_header">
-                <h2>Synonyms</h2>
-            </section>
-            <section class="results">
-                <p id="synonyms">Synonyms will appear here.</p>
-            </section>
-
-            <section class="results_header">
-                <h2>Antonyms</h2>
-            </section>
-            <section class="results">
-                <p id="antonyms">Antonyms will appear here.</p>
-            </section>
+            <section class="results_header"><h2>Definition</h2></section>
+            <section class="results"><p id="definition">Enter a word above and click "Search" to see its definition.</p></section>
+            <section class="results_header"><h2>Synonyms</h2></section>
+            <section class="results"><p id="synonyms">Synonyms will appear here.</p></section>
+            <section class="results_header"><h2>Antonyms</h2></section>
+            <section class="results"><p id="antonyms">Antonyms will appear here.</p></section>
         </div>
-        
         <div class="about_container">
             <section id="about">
                 <h2>About Word Checker</h2>
-                <p>
-                    Word Checker is a simple and user-friendly tool designed to help you explore the English language. 
-                    Whether you're looking for definitions, synonyms, or antonyms, we've got you covered. 
-                    Perfect for writers, students, and anyone looking to expand their vocabulary!
-                </p>
+                <p>Word Checker is a simple and user-friendly tool designed to help you explore the English language. Whether you're looking for definitions, synonyms, or antonyms, we've got you covered. Perfect for writers, students, and anyone looking to expand their vocabulary!</p>
             </section>
         </div>
     </main>
@@ -75,6 +66,5 @@
     </footer>
     
     <script src="script.js" defer></script>
-
 </body>
 </html>
