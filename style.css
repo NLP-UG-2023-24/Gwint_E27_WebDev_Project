@@ -1,124 +1,328 @@
-document.addEventListener('DOMContentLoaded', () => {
+:root{
+    --body-text-color: #333;
+    --accent-color: rgb(106, 106, 180);
+    --background-color: white;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --results-header-color: rgb(235, 235, 255);
+    --header-text-color: white;
+    --input-border-color: #ccc;
+    --box-shadow-color: rgba(106, 106, 180, 0.5);
+    --box-bg-color: #f9f9f9;
+    --menu-hover-bg-color: rgba(255, 255, 255, 0.2);
+    --menu-hover-text-color: #ccc;
+}
 
-    // --- Element Selection ---
-    const body = document.body;
-    const synonymsField = document.getElementById("synonyms");
-    const antonymsField = document.getElementById("antonyms");
-    const definitionField = document.getElementById("definition");
-    const searchButton = document.getElementById("search_button");
-    const randomButton = document.getElementById("random_button");
-    const keywordInput = document.getElementById("keyword");
-    const modeButton = document.getElementById("mode_button");
-    
-    // --- Icon Definitions ---
-    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+.dark_mode{
+    --body-text-color: #e0e0e0;
+    --accent-color: rgb(106, 106, 180);
+    --background-color: #1e1e1e;
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --results-header-color: #3a3a3c;
+    --header-text-color: white;
+    --input-border-color: #444;
+    --box-shadow-color: rgba(106, 106, 180, 0.4);
+    --box-bg-color: #2c2c2e;
+    --menu-hover-bg-color: rgba(106, 106, 180, 0.3);
+    --menu-hover-text-color: white;
+}
 
-    // --- API Configuration ---
-    const APINinjasKey = "cXRL+1hx7MFwH/CcnJNt6w==ifTKw1ZncXBSDZ7Q";
-    const apiBaseURL = "https://api.api-ninjas.com/v1/";
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    color: var(--body-text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s;
+}
 
-    // =========================================================================
-    // PERSISTENT DARK MODE LOGIC
-    // =========================================================================
-    let currentDarkmodeState = localStorage.getItem('dark_mode');
+header {
+    background: var(--accent-color);
+    color: var(--header-text-color);
+    display: flex;
+    justify-content: space-between; /* This is key for alignment */
+    align-items: center;
+    padding: 0.5rem 1rem; /* Adjusted padding */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    box-sizing: border-box;
+    z-index: 10;
+}
 
-    const enableDarkmode = () => {
-        body.classList.add('dark_mode');
-        localStorage.setItem('dark_mode', 'active');
-        modeButton.innerHTML = sunIcon;
-    };
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
-    const disableDarkmode = () => {
-        body.classList.remove('dark_mode');
-        localStorage.setItem('dark_mode', null);
-        modeButton.innerHTML = moonIcon;
-    };
+#site-logo {
+    height: 45px; /* Controls logo size */
+    width: auto;
+    display: block;
+}
 
-    // On page load, apply the stored theme
-    if (currentDarkmodeState === 'active') {
-        enableDarkmode();
-    } else {
-        disableDarkmode();
+.site-title {
+    line-height: 0; /* Prevents extra space around the logo link */
+}
+
+main {
+    padding: 20px;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    width: 70%;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 5px var(--box-shadow-color);
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: var(--accent-color);
+    color: var(--header-text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    margin: 0 5px;
+}
+
+button:hover {
+    box-shadow: 0px 4px 6px var(--box-shadow-color);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.container, .about_container {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.results_header {
+    width: 22%;
+    padding: 10px;
+    margin: 10px;
+    background: var(--results-header-color);
+    border-radius: 5px;
+}
+
+.results {
+    width: 58%;
+    margin: 10px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px var(--box-shadow-color);
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+#about {
+    width: 100%;
+    padding: 2rem;
+    margin: 0;
+    border-radius: 5px;
+    background: var(--box-bg-color);
+    box-shadow: 0px 2px 4px var(--box-shadow-color);
+    box-sizing: border-box;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--header-text-color);
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--menu-hover-text-color);
+    background-color: var(--menu-hover-bg-color);
+}
+
+footer {
+    background: var(--accent-color);
+    color: var(--header-text-color);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0.2rem 0;
+}
+
+footer a {
+    color: var(--header-text-color);
+    font-weight: bold;
+}
+
+.results_header h2 {
+    text-align: center;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.team-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: top;
+    margin: 0 auto 1rem;
+    display: block;
+    border: 3px solid var(--accent-color);
+}
+
+.team-card h3 {
+    margin-top: 0.5rem;
+    color: #343a40;
+}
+
+.team-card p {
+    color: #6c757d;
+}
+
+.dark_mode .results,
+.dark_mode .team-card {
+    background-color: var(--box-bg-color);
+    box-shadow: 0px 4px 8px var(--shadow-color);
+}
+
+.dark_mode .team-card h3 {
+    color: #f5f5f5;
+}
+
+.dark_mode .team-card p {
+    color: var(--body-text-color);
+}
+
+.dark_mode .results_header h2 {
+    color: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 1rem;
     }
-
-    // Add click listener for the mode button
-    modeButton.addEventListener('click', () => {
-        currentDarkmodeState = localStorage.getItem('dark_mode');
-        if (currentDarkmodeState !== 'active') {
-            enableDarkmode();
-        } else {
-            disableDarkmode();
-        }
-    });
-
-    // =========================================================================
-    // CORE SEARCH FUNCTIONALITY (check if elements exist to avoid errors)
-    // =========================================================================
-    if (searchButton) { 
-        function handleSearch(keyword) {
-            if (!keyword || keyword.trim() === '') {
-                definitionField.innerText = "Please enter a word to search.";
-                synonymsField.innerText = "";
-                antonymsField.innerText = "";
-                return;
-            }
-            definitionField.innerText = "Searching for definition...";
-            synonymsField.innerText = "Searching for synonyms...";
-            antonymsField.innerText = "Searching for antonyms...";
-            fetchData(keyword.trim());
-        }
-
-        function fetchData(keyword) {
-            const fetchOptions = { headers: { 'X-Api-Key': APINinjasKey } };
-            const dictionaryURL = `${apiBaseURL}dictionary?word=${keyword}`;
-            const thesaurusURL = `${apiBaseURL}thesaurus?word=${keyword}`;
-
-            fetch(dictionaryURL, fetchOptions)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.definition) {
-                        definitionField.innerHTML = "";
-                        const parts = data.definition.split(/(?=\d+\.)/);
-                        parts.forEach(part => {
-                            const p = document.createElement("p");
-                            p.innerText = part.trim();
-                            definitionField.appendChild(p);
-                        });
-                    } else {
-                        definitionField.innerText = "No definition found.";
-                    }
-                })
-                .catch(error => { console.error("Error fetching definition:", error); definitionField.innerText = "Could not fetch definition."; });
-
-            fetch(thesaurusURL, fetchOptions)
-                .then(response => response.json())
-                .then(data => {
-                    synonymsField.innerText = data.synonyms && data.synonyms.length > 0 ? data.synonyms.join(', ') : "No synonyms found.";
-                    antonymsField.innerText = data.antonyms && data.antonyms.length > 0 ? data.antonyms.join(', ') : "No antonyms found.";
-                })
-                .catch(error => { console.error("Error fetching thesaurus:", error); synonymsField.innerText = "Could not fetch synonyms."; antonymsField.innerText = "Could not fetch antonyms."; });
-        }
-
-        function fetchRandomWord() {
-            keywordInput.value = "Getting a random word...";
-            fetch("https://random-word-api.herokuapp.com/word")
-                .then(response => response.json())
-                .then(data => {
-                    const randomWord = data[0];
-                    keywordInput.value = randomWord;
-                    handleSearch(randomWord);
-                })
-                .catch(error => { console.error("Error fetching random word:", error); keywordInput.value = ""; definitionField.innerText = "Could not fetch a random word."; synonymsField.innerText = ""; antonymsField.innerText = ""; });
-        }
-        
-        searchButton.addEventListener("click", () => handleSearch(keywordInput.value));
-        randomButton.addEventListener("click", fetchRandomWord);
-        keywordInput.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                handleSearch(keywordInput.value);
-            }
-        });
+    .header-left {
+        flex-direction: column;
+        gap: 15px;
     }
-});
+    input[type="text"] {
+        width: 80%;
+    }
+    .results_header, .results {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+}
+
+.control-button {
+    padding: 8px;
+    border: 1px solid var(--header-text-color);
+    background-color: transparent;
+    color: var(--header-text-color);
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.control-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.control-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#contact-form label {
+    font-weight: bold;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+#contact-form button {
+    width: fit-content;
+    align-self: flex-start;
+}
