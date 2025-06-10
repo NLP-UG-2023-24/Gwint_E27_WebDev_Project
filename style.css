@@ -15,21 +15,37 @@
     /* rgb(106, 106, 180); */
 }
 
-.dark_mode{
-    --body-text-color: white;
+.dark_mode {
+    --body-text-color: #e0e0e0;
     --accent-color: rgb(106, 106, 180);
-    --background-color: rgb(45, 46, 46);
-    --shadow-color: rgba(255,255, 255, 0.2);
-    --results-header-color: rgb(235, 235, 255);
+    --background-color: #1e1e1e; 
+    --box-bg-color: #2c2c2e; 
+    --results-header-color: #3a3a3c;
     --header-text-color: white;
-    --input-border-color: #ccc;
-    --box-shadow-color: rgba(106, 106, 180, 0.5);
-    --mode-button-color: black;
-    --box-bg-color: #f9f9f9;
-    --menu-hover-bg-color: ;
-    /* rgba(255, 255, 255, 0.477); */
-    --menu-hover-text-color: #cccccc;
-    /* rgb(106, 106, 180); */
+    --input-border-color: #444;
+    --shadow-color: rgba(0, 0, 0, 0.4); 
+    --box-shadow-color: rgba(106, 106, 180, 0.4); 
+    --mode-button-color: #e0e0e0;
+    --menu-hover-text-color: white;
+    --menu-hover-bg-color: rgba(106, 106, 180, 0.3);
+}
+
+.dark_mode .results,
+.dark_mode .team-card {
+    background-color: var(--box-bg-color);
+    box-shadow: 0px 4px 8px var(--shadow-color);
+}
+
+.dark_mode .team-card h3 {
+    color: #f5f5f5;
+}
+
+.dark_mode .team-card p {
+    color: var(--body-text-color);
+}
+
+.dark_mode .results_header h2 {
+    color: #f5f5f5;
 }
 
 body {
@@ -304,20 +320,18 @@ footer p {
     transform: translateY(-5px);
 }
 
-.avatar-placeholder {
+.team-avatar {
     width: 150px;
     height: auto;
-    min-height: 50px;  
+    min-height: 50px;
     border-radius: 50%;
-    background-color: #e9ecef;
+    object-fit: cover;
+    object-position: top;
     margin: 0 auto 1rem;
-    padding: 1rem; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    font-size: 3rem;  
+    display: block; 
+    border: 3px solid var(--accent-color);
+    padding: 1rem;
+    font-size: 3rem; 
     color: #6c757d;
 }
 
