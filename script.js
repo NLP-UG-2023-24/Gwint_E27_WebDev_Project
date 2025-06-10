@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const html = document.documentElement;
 
-    // Search elements (only on index.html, so check if they exist)
     const synonymsField = document.getElementById("synonyms");
     const antonymsField = document.getElementById("antonyms");
     const definitionField = document.getElementById("definition");
@@ -12,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const randomButton = document.getElementById("random_button");
     const keywordInput = document.getElementById("keyword");
     
-    // Control elements (on all pages)
     const modeButton = document.getElementById("mode_button");
     const accessibilityButton = document.getElementById("accessibility-button");
     const accessibilityOptions = document.getElementById("accessibility-options");
@@ -22,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const resetAccessibilityButton = document.getElementById("reset-accessibility-button");
     const accessibilityMenu = document.querySelector('.accessibility-menu');
 
+    // --- Icon Definitions ---
+    const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
     // --- API Configuration ---
     const APINinjasKey = "cXRL+1hx7MFwH/CcnJNt6w==ifTKw1ZncXBSDZ7Q";
     const apiBaseURL = "https://api.api-ninjas.com/v1/";
@@ -29,17 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // ACCESSIBILITY LOGIC
     // =========================================================================
-    
     const applyStoredAccessibility = () => {
-        if (localStorage.getItem('accessibility_contrast') === 'high') {
-            body.classList.add('high-contrast');
-        }
-        if (localStorage.getItem('accessibility_grayscale') === 'true') {
-            body.classList.add('grayscale');
-        }
-        if (localStorage.getItem('accessibility_font') === 'enlarged') {
-            html.classList.add('enlarge-font');
-        }
+        if (localStorage.getItem('accessibility_contrast') === 'high') body.classList.add('high-contrast');
+        if (localStorage.getItem('accessibility_grayscale') === 'true') body.classList.add('grayscale');
+        if (localStorage.getItem('accessibility_font') === 'enlarged') html.classList.add('enlarge-font');
     };
 
     accessibilityButton.addEventListener('click', (event) => {
@@ -55,39 +50,29 @@ document.addEventListener('DOMContentLoaded', () => {
             accessibilityButton.setAttribute('aria-expanded', 'false');
         }
     });
-    
-    accessibilityOptions.addEventListener('click', (event) => event.stopPropagation());
 
+    accessibilityOptions.addEventListener('click', (event) => event.stopPropagation());
 
     highContrastButton.addEventListener('click', () => {
         body.classList.toggle('high-contrast');
         body.classList.remove('grayscale');
         localStorage.removeItem('accessibility_grayscale');
-        if (body.classList.contains('high-contrast')) {
-            localStorage.setItem('accessibility_contrast', 'high');
-        } else {
-            localStorage.removeItem('accessibility_contrast');
-        }
+        if (body.classList.contains('high-contrast')) localStorage.setItem('accessibility_contrast', 'high');
+        else localStorage.removeItem('accessibility_contrast');
     });
 
     grayscaleButton.addEventListener('click', () => {
         body.classList.toggle('grayscale');
         body.classList.remove('high-contrast');
         localStorage.removeItem('accessibility_contrast');
-        if (body.classList.contains('grayscale')) {
-            localStorage.setItem('accessibility_grayscale', 'true');
-        } else {
-            localStorage.removeItem('accessibility_grayscale');
-        }
+        if (body.classList.contains('grayscale')) localStorage.setItem('accessibility_grayscale', 'true');
+        else localStorage.removeItem('accessibility_grayscale');
     });
 
     enlargeFontButton.addEventListener('click', () => {
         html.classList.toggle('enlarge-font');
-        if (html.classList.contains('enlarge-font')) {
-            localStorage.setItem('accessibility_font', 'enlarged');
-        } else {
-            localStorage.removeItem('accessibility_font');
-        }
+        if (html.classList.contains('enlarge-font')) localStorage.setItem('accessibility_font', 'enlarged');
+        else localStorage.removeItem('accessibility_font');
     });
 
     resetAccessibilityButton.addEventListener('click', () => {
@@ -98,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('accessibility_font');
     });
 
-
     // =========================================================================
     // PERSISTENT DARK MODE LOGIC
     // =========================================================================
@@ -107,33 +91,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const enableDarkmode = () => {
         body.classList.add('dark_mode');
         localStorage.setItem('dark_mode', 'active');
-        modeButton.textContent = "Light Mode";
+        modeButton.innerHTML = sunIcon;
     };
 
     const disableDarkmode = () => {
         body.classList.remove('dark_mode');
         localStorage.setItem('dark_mode', null);
-        modeButton.textContent = "Dark Mode";
+        modeButton.innerHTML = moonIcon;
     };
 
-    if (currentDarkmodeState === 'active') {
-        enableDarkmode();
-    } else {
-        disableDarkmode();
-    }
+    if (currentDarkmodeState === 'active') enableDarkmode();
+    else disableDarkmode();
+    
     applyStoredAccessibility();
 
     modeButton.addEventListener('click', () => {
         currentDarkmodeState = localStorage.getItem('dark_mode');
-        if (currentDarkmodeState !== 'active') {
-            enableDarkmode();
-        } else {
-            disableDarkmode();
-        }
+        if (currentDarkmodeState !== 'active') enableDarkmode();
+        else disableDarkmode();
     });
 
     // =========================================================================
-    // CORE SEARCH FUNCTIONALITY (check if elements exist)
+    // CORE SEARCH FUNCTIONALITY (check if elements exist to avoid errors)
     // =========================================================================
     if (searchButton) { 
         function handleSearch(keyword) {
@@ -151,8 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function fetchData(keyword) {
             const fetchOptions = { headers: { 'X-Api-Key': APINinjasKey } };
-            const dictionaryURL = `${apiBaseURL}dictionary?word=${keyword}`;
-            const thesaurusURL = `${apiBaseURL}thesaurus?word=${keyword}`;
+            const dictionaryURL = `<span class="math-inline">\{apiBaseURL\}dictionary?word\=</span>{keyword}`;
+            const thesaurusURL = `<span class="math-inline">\{apiBaseURL\}thesaurus?word\=</span>{keyword}`;
 
             fetch(dictionaryURL, fetchOptions)
                 .then(response => response.json())
@@ -175,30 +154,4 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => response.json())
                 .then(data => {
                     synonymsField.innerText = data.synonyms && data.synonyms.length > 0 ? data.synonyms.join(', ') : "No synonyms found.";
-                    antonymsField.innerText = data.antonyms && data.antonyms.length > 0 ? data.antonyms.join(', ') : "No antonyms found.";
-                })
-                .catch(error => { console.error("Error fetching thesaurus:", error); synonymsField.innerText = "Could not fetch synonyms."; antonymsField.innerText = "Could not fetch antonyms."; });
-        }
-
-        function fetchRandomWord() {
-            keywordInput.value = "Getting a random word...";
-            fetch("https://random-word-api.herokuapp.com/word")
-                .then(response => response.json())
-                .then(data => {
-                    const randomWord = data[0];
-                    keywordInput.value = randomWord;
-                    handleSearch(randomWord);
-                })
-                .catch(error => { console.error("Error fetching random word:", error); keywordInput.value = ""; definitionField.innerText = "Could not fetch a random word."; synonymsField.innerText = ""; antonymsField.innerText = ""; });
-        }
-        
-        searchButton.addEventListener("click", () => handleSearch(keywordInput.value));
-        randomButton.addEventListener("click", fetchRandomWord);
-        keywordInput.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                handleSearch(keywordInput.value);
-            }
-        });
-    }
-});
+                    antonymsField.innerText = data.antonyms && data.antonyms.length > a
