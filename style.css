@@ -41,9 +41,9 @@ header {
     background: var(--accent-color);
     color: var(--header-text-color);
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between; /* This is key for alignment */
     align-items: center;
-    padding: 1rem;
+    padding: 0.5rem 1rem; /* Adjusted padding */
     position: sticky;
     top: 0;
     width: 100%;
@@ -52,16 +52,20 @@ header {
     z-index: 10;
 }
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 #site-logo {
-    height: 50px;
+    height: 45px; /* Controls logo size */
     width: auto;
-    vertical-align: middle;
+    display: block;
 }
 
 .site-title {
-    color: var(--header-text-color);
-    text-decoration: none;
-    margin-right: 20px;
+    line-height: 0; /* Prevents extra space around the logo link */
 }
 
 main {
@@ -142,10 +146,6 @@ button:active {
     background: var(--box-bg-color);
     box-shadow: 0px 2px 4px var(--box-shadow-color);
     box-sizing: border-box;
-}
-
-nav {
-    margin-left: 20px;
 }
 
 nav ul {
@@ -256,9 +256,11 @@ footer a {
     header {
         flex-direction: column;
         gap: 15px;
+        padding: 1rem;
     }
-    nav {
-        margin-left: 0;
+    .header-left {
+        flex-direction: column;
+        gap: 15px;
     }
     input[type="text"] {
         width: 80%;
@@ -269,129 +271,30 @@ footer a {
     }
 }
 
-/* ===================================================================== */
-/* ACCESSIBILITY & CONTROLS STYLES
-/* ===================================================================== */
 .header-controls {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-left: auto;
 }
 
 .control-button {
-    padding: 8px 12px;
+    padding: 8px;
     border: 1px solid var(--header-text-color);
     background-color: transparent;
     color: var(--header-text-color);
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: bold;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .control-button:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 .control-button svg {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
+    width: 24px;
+    height: 24px;
 }
 
-.accessibility-menu {
-    position: relative;
-    display: inline-block;
-}
-
-.accessibility-dropdown {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: var(--background-color);
-    border: 1px solid var(--input-border-color);
-    box-shadow: 0px 8px 16px 0px var(--shadow-color);
-    z-index: 100;
-    min-width: 160px;
-    border-radius: 5px;
-    padding: 5px 0;
-}
-
-.accessibility-dropdown.show {
-    display: block;
-}
-
-.accessibility-dropdown button {
-    color: var(--body-text-color);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.accessibility-dropdown button:hover {
-    background-color: var(--accent-color);
-    color: var(--header-text-color);
-}
-
-/* ===================================================================== */
-/* ACCESSIBILITY MODE CLASSES
-/* ===================================================================== */
-body.grayscale {
-    filter: grayscale(100%);
-}
-
-html.enlarge-font {
-    font-size: 125%;
-}
-
-body.high-contrast {
-    background-color: black !important;
-    color: white !important;
-}
-.high-contrast header,
-.high-contrast footer {
-    background: black !important;
-    color: white !important;
-    border-bottom: 2px solid yellow;
-}
-.high-contrast .control-button,
-.high-contrast button {
-    background: black !important;
-    color: white !important;
-    border: 2px solid yellow !important;
-}
-.high-contrast input[type="text"],
-.high-contrast #contact-form input,
-.high-contrast #contact-form textarea {
-    background-color: #333 !important;
-    color: white !important;
-    border: 2px solid yellow !important;
-}
-.high-contrast .results,
-.high-contrast #about,
-.high-contrast .results_header,
-.high-contrast .team-card {
-    background: black !important;
-    border: 2px solid yellow !important;
-}
-.high-contrast a, .high-contrast h1, .high-contrast h2, .high-contrast h3 {
-    color: white !important;
-}
-.high-contrast nav ul li a:hover,
-.high-contrast .accessibility-dropdown button:hover {
-    background-color: yellow !important;
-    color: black !important;
-}
-
-/* ===================================================================== */
-/* CONTACT FORM STYLES
-/* ===================================================================== */
 #contact-form {
     display: flex;
     flex-direction: column;
