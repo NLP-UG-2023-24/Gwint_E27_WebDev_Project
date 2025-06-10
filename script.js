@@ -50,28 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     definitionField.innerText = "No definition found.";
                 }
             })
-            .catch(error => {
-                console.error("Error fetching definition:", error);
-                definitionField.innerText = "Could not fetch definition. Please try again.";
-            });
+            .catch(error => { console.error("Error fetching definition:", error); definitionField.innerText = "Could not fetch definition."; });
 
         fetch(thesaurusURL, fetchOptions)
             .then(response => response.json())
             .then(data => {
-                const synonyms = data.synonyms && data.synonyms.length > 0
-                    ? data.synonyms.join(', ')
-                    : "No synonyms found.";
-                const antonyms = data.antonyms && data.antonyms.length > 0
-                    ? data.antonyms.join(', ')
-                    : "No antonyms found.";
-                synonymsField.innerText = synonyms;
-                antonymsField.innerText = antonyms;
+                synonymsField.innerText = data.synonyms && data.synonyms.length > 0 ? data.synonyms.join(', ') : "No synonyms found.";
+                antonymsField.innerText = data.antonyms && data.antonyms.length > 0 ? data.antonyms.join(', ') : "No antonyms found.";
             })
-            .catch(error => {
-                console.error("Error fetching thesaurus:", error);
-                synonymsField.innerText = "Could not fetch synonyms.";
-                antonymsField.innerText = "Could not fetch antonyms.";
-            });
+            .catch(error => { console.error("Error fetching thesaurus:", error); synonymsField.innerText = "Could not fetch synonyms."; antonymsField.innerText = "Could not fetch antonyms."; });
     }
 
     // =========================================================================
@@ -79,47 +66,40 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     function fetchRandomWord() {
         keywordInput.value = "Getting a random word...";
-        const randomWordApiUrl = "https://random-word-api.herokuapp.com/word";
-        fetch(randomWordApiUrl)
+        fetch("https://random-word-api.herokuapp.com/word")
             .then(response => response.json())
             .then(data => {
                 const randomWord = data[0];
                 keywordInput.value = randomWord;
                 handleSearch(randomWord);
             })
-            .catch(error => {
-                console.error("Error fetching random word:", error);
-                keywordInput.value = "";
-                definitionField.innerText = "Could not fetch a random word. Please try again.";
-                synonymsField.innerText = "";
-                antonymsField.innerText = "";
-            });
+            .catch(error => { console.error("Error fetching random word:", error); keywordInput.value = ""; definitionField.innerText = "Could not fetch a random word."; synonymsField.innerText = ""; antonymsField.innerText = ""; });
     }
 
     // =========================================================================
-    // DARK MODE TOGGLE (UPDATED)
+    // PERSISTENT DARK MODE (Uses localStorage)
     // =========================================================================
-    /**
-     * Toggles the 'dark_mode' class on the body element and updates the
-     * button text to reflect the current state.
-     */
-    function toggleDarkMode() {
-        // First, toggle the class on the body element
-        body.classList.toggle('dark_mode');
+    let currentDarkmodeState = localStorage.getItem('dark_mode');
 
-        // Now, check if the body currently has the 'dark_mode' class
-        const isDarkMode = body.classList.contains('dark_mode');
+    const enableDarkmode = () => {
+        body.classList.add('dark_mode');
+        localStorage.setItem('dark_mode', 'active');
+        modeButton.textContent = "Light Mode";
+    };
 
-        // Update the button's text based on the current mode
-        if (isDarkMode) {
-            // If the page IS in dark mode, the button should say "Light Mode"
-            modeButton.textContent = 'Light Mode';
-        } else {
-            // If the page IS NOT in dark mode, the button should say "Dark Mode"
-            modeButton.textContent = 'Dark Mode';
-        }
+    const disableDarkmode = () => {
+        body.classList.remove('dark_mode');
+        localStorage.setItem('dark_mode', null);
+        modeButton.textContent = "Dark Mode";
+    };
+
+    // On page load, check the user's saved preference and apply it.
+    if (currentDarkmodeState === 'active') {
+        enableDarkmode();
+    } else {
+        disableDarkmode();
     }
-    
+
     // =========================================================================
     // EVENT LISTENERS
     // =========================================================================
@@ -136,5 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    modeButton.addEventListener('click', toggleDarkMode);
+    // Add the click listener for the dark mode button.
+    modeButton.addEventListener('click', () => {
+        // Check the state again in case another tab changed it.
+        currentDarkmodeState = localStorage.getItem('dark_mode');
+        if (currentDarkmodeState !== 'active') {
+            enableDarkmode();
+        } else {
+            disableDarkmode();
+        }
+    });
 });
