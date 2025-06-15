@@ -3,60 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <title>Team - Word Checker</title>
+
+    <link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
+    <link rel="icon" href="favicons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg">
+    <link rel="manifest" href="favicons/site.webmanifest">
+
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
     <header>
-        <a href="index.html" class="back-link">← Back to Home</a>        
+        <div class="header-left">
+            <a href="index.html" class="site-title">
+                <img src="assets/logo.png" alt="Word Checker Logo" id="site-logo">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-controls">
+            <button type="button" id="mode_button" class="control-button"></button>
+        </div>
     </header>
 
     <main>
-        <h2>About the Authors</h2>
-        <section>
-            <h3>Our Mission</h3>
-            <p>
-                This tool is designed to make looking up words fast, accessible, and informative. 
-                Users can find definitions, etymologies, pronunciations (IPA), examples, synonyms, and more — all in one place.
-            </p>
-            <p>
-                It's a clean, student-built dictionary site to help both native and non-native speakers better understand English vocabulary.
-            </p>
-        </section>
-        
-        <h3>Our Team</h3>
-        <p>This project is the result of collaboration between students from the University of Gdańsk:</p>
-       <div class="author-container">
-            <div class="author-card">
-              <h3><a href="https://github.com/AniaPotrykus" target="_blank" rel="noopener noreferrer" aria-label="Ania's GitHub Profile">Ania</a></h3>
-            </div>
-            <div class="author-card">
-              <h3><a href="https://github.com/agatahabkowska" target="_blank" rel="noopener noreferrer" aria-label="Agata's GitHub Profile">Agata</a></h3>
-            </div>
-            <div class="author-card">
-              <h3><a href="https://github.com/astix66" target="_blank" rel="noopener noreferrer" aria-label="Asteria's GitHub Profile">Asteria</a></h3>
-            </div>
-            <div class="author-card">
-              <h3><a href="https://github.com/PaulannK" target="_blank" rel="noopener noreferrer" aria-label="Paula's GitHub Profile">Paula</a></h3>
-            </div>
+        <div id="team_div" class="container about-page-container">
+            <section id="about">
+                <h2>Our Team</h2>
+                <p>Meet our team. Young and dynamic.</p>
+                <div class="team-container">
+                    <div class="team-card">
+                        <img src="assets/karolina.png" alt="Karolina's avatar" class="team-avatar">
+                        <h3>Karolina</h3>
+                        <p>Bringing together a technical foundation and a deep interest in language, I specialize in analytics and NLP. I speak Polish, English and French. I'm currently working as a reporting analyst and pursuing master's studies in English philology. In my spare time, you'll likely find me dancing to swing music or playing the oboe.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="assets/adam.png" alt="Adam's avatar" class="team-avatar">
+                        <h3>Adam</h3>
+                        <p>With a technical mindset and a love for language, I specialize in analytics and NLP. I'm fluent in Polish and English, work in retail finance, and study English philology with an NLP focus. Off the clock, I'm into speed walking, ambitious baking, and genealogy-preferably with disco divas in my headphones and deep thoughts in my head.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="assets/bartek.png" alt="Bartek's avatar" class="team-avatar">
+                        <h3>Bartek</h3>
+                        <p>I'm a student of Natural Language Processing with a strong interest in the intersection of linguistics and technology. My journey into IT began through working with language-processing tools, which deepened my understanding of AI and its potential. In my free time, I dedicate myself to my two greatest passions: football and traveling.</p>
+                    </div>
+                    <div class="team-card">
+                        <img src="assets/gabi.png" alt="Gabriela's avatar" class="team-avatar">
+                        <h3>Gabriela</h3>
+                        <p>I'm a curious student of Natural Language Processing, currently working as an English teacher and recruiter. In my free time, I enjoy biking, going to the gym, and-most of all-traveling. I'm passionate about exploring new places and love the freedom that comes with changing where I live from time to time.</p>
+                    </div>
+                </div>
+            </section>
         </div>
-        
-        <section style="margin-top: 2rem;">
-            <h2>Credits</h2>
-            <p>Built using the <a href="https://developer.wordnik.com/" target="_blank" rel="noopener noreferrer">Wordnik API</a> to deliver rich word data.</p>
-        </section>
-
-        <label class="switch">
-            <input type="checkbox" id="darkModeToggle">
-            <span class="slider round"></span>
-        </label>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2025 Linguistic Helper – Dictionary Project | UG NLP Students</p>
+    <footer>
+        <p>&copy; 2025 Word Checker. All rights reserved.</p>
+        <p>View on <a href="https://github.com/NLP-UG-2023-24/Gwint_E27_WebDev_Project" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        <p>Your go-to tool for exploring words and meanings.</p>
     </footer>
 
-    <script src="main.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
