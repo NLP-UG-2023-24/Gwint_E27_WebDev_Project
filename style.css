@@ -41,9 +41,9 @@ header {
     background: var(--accent-color);
     color: var(--header-text-color);
     display: flex;
-    justify-content: space-between; /* This is key for alignment */
+    justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem; /* Adjusted padding */
+    padding: 0.5rem 1rem;
     position: sticky;
     top: 0;
     width: 100%;
@@ -59,13 +59,13 @@ header {
 }
 
 #site-logo {
-    height: 45px; /* Controls logo size */
+    height: 55px;
     width: auto;
     display: block;
 }
 
 .site-title {
-    line-height: 0; /* Prevents extra space around the logo link */
+    line-height: 0;
 }
 
 main {
@@ -113,7 +113,7 @@ button:active {
     transform: scale(0.95);
 }
 
-.container, .about_container {
+.container {
     padding: 2rem;
     display: flex;
     flex-wrap: wrap;
@@ -138,7 +138,7 @@ button:active {
     box-sizing: border-box;
 }
 
-#about {
+#about, #features, #story, #sources, #cta {
     width: 100%;
     padding: 2rem;
     margin: 0;
@@ -147,6 +147,20 @@ button:active {
     box-shadow: 0px 2px 4px var(--box-shadow-color);
     box-sizing: border-box;
 }
+
+/* MODIFIED: This rule now handles the layout for the About page container */
+.about-page-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem; /* This adds space between the sections */
+}
+
+/* The sections inside the about page container should not take up the full screen width on larger displays */
+.about-page-container > section {
+    width: 100%;
+    max-width: 900px; /* Adjust this value as you like */
+}
+
 
 nav ul {
     list-style: none;
@@ -257,6 +271,7 @@ footer a {
         flex-direction: column;
         gap: 15px;
         padding: 1rem;
+        position: relative;
     }
     .header-left {
         flex-direction: column;
@@ -268,6 +283,11 @@ footer a {
     .results_header, .results {
         width: 100%;
         margin: 10px 0;
+    }
+    .header-controls {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
     }
 }
 
@@ -325,4 +345,69 @@ footer a {
 #contact-form button {
     width: fit-content;
     align-self: flex-start;
+}
+
+.button-primary {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--accent-color);
+    color: var(--header-text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-primary:hover {
+    box-shadow: 0px 4px 6px var(--box-shadow-color);
+    filter: brightness(95%);
+}
+
+.button-primary:active {
+    transform: scale(0.95);
+}
+
+.hero-section {
+    text-align: center;
+    padding: 1rem 1rem 2rem 1rem;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.dark_mode .hero-section h1 {
+    color: var(--menu-hover-text-color);
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--body-text-color);
+}
+
+.word-display {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.word-display h2 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--body-text-color);
+    margin: 0;
+}
+
+.word-display h2 em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent-color);
 }
