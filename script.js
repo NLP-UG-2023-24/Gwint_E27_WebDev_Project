@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     const body = document.body;
     const modeButton = document.getElementById("mode_button");
     
@@ -87,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 for (const response of responses) {
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
+                        throw new Error(`API error! status: ${response.status}`);
                     }
                 }
 
@@ -134,9 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return response.json();
                 })
                 .then(data => {
-                    // THIS IS THE ONLY LINE THAT NEEDED TO BE CORRECTED
                     const randomWord = data.word;
-
                     keywordInput.value = randomWord;
                     handleSearch(randomWord);
                 })
