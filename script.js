@@ -150,7 +150,7 @@ if (searchButton) {
 // ===================================
 const wordOfTheDayContainer = document.getElementById('word-of-the-day-container');
 
-// Only run this code on the "About Website" page
+// Only run this code on the "About" page
 if (wordOfTheDayContainer) {
     const apiKey = 'gqsv9riz53v4hn1jhyv41at2xcmyj8n18z5ia6j7d9z87p2sh';
 
