@@ -134,7 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     return response.json();
                 })
                 .then(data => {
+                    // THIS IS THE ONLY LINE THAT NEEDED TO BE CORRECTED
                     const randomWord = data.word;
+
                     keywordInput.value = randomWord;
                     handleSearch(randomWord);
                 })
