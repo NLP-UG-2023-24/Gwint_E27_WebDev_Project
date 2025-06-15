@@ -26,6 +26,7 @@
     --menu-hover-text-color: white;
 }
 
+/* === GENERAL BODY & TYPOGRAPHY === */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -37,6 +38,20 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+h2 {
+    font-size: 2rem;
+    color: var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--input-border-color);
+    text-align: center;
+}
+
+.dark_mode h2 {
+     color: var(--menu-hover-text-color);
+}
+
+/* === HEADER === */
 header {
     background: var(--accent-color);
     color: var(--header-text-color);
@@ -72,6 +87,7 @@ main {
     padding: 20px;
 }
 
+/* === FORMS & BUTTONS === */
 form {
     text-align: center;
     margin-bottom: 20px;
@@ -113,6 +129,7 @@ button:active {
     transform: scale(0.95);
 }
 
+/* === CONTAINERS & LAYOUT === */
 .container {
     padding: 2rem;
     display: flex;
@@ -126,6 +143,17 @@ button:active {
     margin: 10px;
     background: var(--results-header-color);
     border-radius: 5px;
+}
+
+.results_header h2 {
+    font-size: 1.5rem;
+    border-bottom: none;
+    margin-bottom: 0;
+    color: var(--body-text-color);
+}
+
+.dark_mode .results_header h2 {
+    color: #f5f5f5;
 }
 
 .results {
@@ -159,6 +187,46 @@ button:active {
     max-width: 900px;
 }
 
+.about-page-container section > h2 + p {
+    font-size: 1.1rem;
+    text-align: center;
+    margin: -1rem auto 2rem auto;
+    max-width: 80%;
+}
+
+.about-page-container section ul {
+    list-style: none;
+    padding-left: 1rem;
+}
+
+.about-page-container section li {
+    margin-bottom: 1.25rem;
+    line-height: 1.7;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.about-page-container section li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+.about-page-container section li strong {
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: var(--body-text-color);
+}
+
+.dark_mode .about-page-container section li strong {
+    color: #f5f5f5;
+}
+
+/* === NAVIGATION & FOOTER === */
 nav ul {
     list-style: none;
     display: flex;
@@ -199,10 +267,7 @@ footer a {
     font-weight: bold;
 }
 
-.results_header h2 {
-    text-align: center;
-}
-
+/* === TEAM PAGE === */
 .team-container {
     display: flex;
     flex-wrap: wrap;
@@ -259,11 +324,11 @@ footer a {
     color: var(--body-text-color);
 }
 
-.dark_mode .results_header h2 {
-    color: #f5f5f5;
-}
-
+/* === RESPONSIVE & MOBILE === */
 @media (max-width: 768px) {
+    h2 {
+        font-size: 1.8rem;
+    }
     header {
         flex-direction: column;
         gap: 15px;
@@ -310,6 +375,49 @@ footer a {
 .control-button svg {
     width: 24px;
     height: 24px;
+}
+
+/* === HOMEPAGE SPECIFIC === */
+.hero-section {
+    text-align: center;
+    padding: 1rem 1rem 2rem 1rem;
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.dark_mode .hero-section h1 {
+    color: var(--menu-hover-text-color);
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: var(--body-text-color);
+}
+
+.word-display {
+    text-align: center;
+    margin-bottom: 2rem;
+    display: none;
+}
+
+.word-display h2 {
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--body-text-color);
+    margin: 0;
+    border-bottom: none;
+}
+
+.word-display h2 em {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--accent-color);
 }
 
 #contact-form {
@@ -366,45 +474,4 @@ footer a {
 
 .button-primary:active {
     transform: scale(0.95);
-}
-
-.hero-section {
-    text-align: center;
-    padding: 1rem 1rem 2rem 1rem;
-}
-
-.hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent-color);
-}
-
-.dark_mode .hero-section h1 {
-    color: var(--menu-hover-text-color);
-}
-
-.hero-section p {
-    font-size: 1.2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    color: var(--body-text-color);
-}
-
-.word-display {
-    text-align: center;
-    margin-bottom: 2rem;
-    display: none;
-}
-
-.word-display h2 {
-    font-size: 2.2rem;
-    font-weight: 300;
-    color: var(--body-text-color);
-    margin: 0;
-}
-
-.word-display h2 em {
-    font-style: normal;
-    font-weight: 600;
-    color: var(--accent-color);
 }
