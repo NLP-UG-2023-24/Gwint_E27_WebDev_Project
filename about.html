@@ -3,84 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Word Checker</title>
-
-    <link rel="apple-touch-icon" href="favicons/apple-touch-icon.png">
-    <link rel="icon" href="favicons/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg">
-    <link rel="manifest" href="favicons/site.webmanifest">
-
-    <link rel="stylesheet" href="style.css"/>
+    <title>About Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
 </head>
 <body>
     <header>
-        <div class="header-left">
-            <a href="index.html" class="site-title">
-                <img src="assets/logo.png" alt="Word Checker Logo" id="site-logo">
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="team.html">Team</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="header-controls">
-            <button type="button" id="mode_button" class="control-button"></button>
-        </div>
+        <a href="index.html" class="back-link">← Back to Home</a>        
     </header>
 
     <main>
-        <div class="container about-page-container">
-            <section id="about">
-                <h2>Our Mission</h2>
-                <p>In a world full of information, clarity is key. Word Checker was created with a simple mission: to make language exploration easy and accessible for everyone. We believe that a deeper understanding of words enriches communication, sparks creativity, and empowers learning.</p>
-                <p>Whether you're a student striving for academic excellence, a writer perfecting your craft, an English language learner building confidence, or simply a curious mind, our tool is designed for you.</p>
-            </section>
-        
-            <section id="features">
-                <h2>Key Features</h2>
-                <p>Word Checker is more than just a dictionary. It's an integrated language companion that offers:</p>
-                <ul>
-                    <li><strong>Comprehensive Definitions:</strong> Get clear, concise meanings for any word.</li>
-                    <li><strong>Rich Thesaurus:</strong> Discover a wide range of synonyms and antonyms to enhance your vocabulary.</li>
-                    <li><strong>Interactive Experience:</strong> A clean, fast, and user-friendly interface designed for all devices.</li>
-                    <li><strong>Word Discovery:</strong> Use the "Random Word" feature to learn something new and unexpected every day.</li>
-                </ul>
-            </section>
+        <h2>About the Website</h2>
+        <p>
+            Linguistic Helper is your all-in-one dictionary resource. Instead of comparing different sources, this tool provides a single, comprehensive overview for any English word. It's designed to be a clean, fast, and reliable reference for students, writers, and language learners.
+        </p>
+        <p>
+            Our goal is to give you a complete picture of a word, including its definition, origins (etymology), synonyms, pronunciation, and usage examples, all powered by the robust Wordnik API.
+        </p>
+    
+        <section class="info-card" id="word-of-the-day-container">
+            <h2>Word of the Day</h2>
+            <h3 id="wod-word">Loading...</h3>
+            <p id="wod-definition"></p>
+            <em id="wod-pronunciation"></em>
+        </section>
+    
+        <section class="info-card" id="random-word-generator">
+            <h2>Random Word Generator</h2>
+            <p>Discover a new word to explore. Click the button to get a random word!</p>
+            <button id="random-word-btn">Generate Random Word</button>
+            <div id="random-word-result"></div>
+        </section>
 
-            <section id="story">
-                <h2>Our Story & Technology</h2>
-                <p>Word Checker was born as a project for the Natural Language Processing course at the University of Gdańsk (2023-24). It represents our passion for web development and linguistics, combining a powerful backend with a sleek front-end.</p>
-                <p>The site is built with modern web technologies, including HTML for structure, CSS for styling, and JavaScript to power the interactive features and communication with external data sources.</p>
-            </section>
-        
-            <section id="sources">
-                <h2>Data Sources</h2>
-                <p>To provide reliable and accurate information, this project relies on the following excellent external APIs:</p>
-                <ul>
-                     <li><strong>API-Ninjas:</strong> Used for the <a href="https://api-ninjas.com/api/dictionary" target="_blank" rel="noopener noreferrer">Dictionary</a>, <a href="https://api-ninjas.com/api/thesaurus" target="_blank" rel="noopener noreferrer">Thesaurus</a>, and Rhyme functionalities.</li>
-                     <li><strong>Random Word API:</strong> Used for the "Random" button to fetch a <a href="https://random-word-api.herokuapp.com/" target="_blank" rel="noopener noreferrer">random word</a>.</li>
-                </ul>
-                <p>We are grateful to these providers for making their data available.</p>
-            </section>
-        
-            <section id="cta">
-                <h2>Ready to Start Exploring?</h2>
-                <p>Jump right in and see what you can discover. Check your first word now!</p>
-                <a href="index.html" class="button-primary">Go to Word Checker</a>
-            </section>
-        </div>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider round"></span>
+        </label>
     </main>
-
-    <footer>
-        <p>&copy; 2025 Word Checker. All rights reserved.</p>
-        <p>View on <a href="https://github.com/NLP-UG-2023-24/Gwint_E27_WebDev_Project" target="_blank" rel="noopener noreferrer">GitHub</a></p>
-        <p>Your go-to tool for exploring words and meanings.</p>
+    
+    <footer class="footer">
+        <p>&copy; 2025 Linguistic Helper – Dictionary Project | UG NLP Students</p>
     </footer>
 
-    <script src="script.js" defer></script>
+    <script src="main.js"></script>
 </body>
 </html>
