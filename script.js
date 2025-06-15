@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const synonymsField = document.getElementById("synonyms");
         const antonymsField = document.getElementById("antonyms");
         const definitionField = document.getElementById("definition");
+        const rhymesField = document.getElementById("rhymes");
         const searchButton = document.getElementById("search_button");
         const randomButton = document.getElementById("random_button");
         const keywordInput = document.getElementById("keyword");
@@ -68,9 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 antonymsField.innerText = "";
                 return;
             }
+
             definitionField.innerText = "Searching for definition...";
             synonymsField.innerText = "Searching for synonyms...";
             antonymsField.innerText = "Searching for antonyms...";
+            rhymesField.innerText = "Searching for rhymes...";
             fetchData(keyword.trim());
         }
 
@@ -78,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const fetchOptions = { headers: { 'X-Api-Key': APINinjasKey } };
             const dictionaryURL = `${apiBaseURL}dictionary?word=${keyword}`;
             const thesaurusURL = `${apiBaseURL}thesaurus?word=${keyword}`;
+            const rhymeURL = `${apiBaseURL}rhyme?word=${keyword}`;
 
             fetch(dictionaryURL, fetchOptions)
                 .then(response => response.json())
@@ -94,7 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         definitionField.innerText = "No definition found.";
                     }
                 })
-                .catch(error => { console.error("Error fetching definition:", error); definitionField.innerText = "Could not fetch definition."; });
+                .catch(error => { 
+                    console.error("Error fetching definition:", error); 
+                    definitionField.innerText = "Could not fetch definition."; 
+                });
 
             fetch(thesaurusURL, fetchOptions)
                 .then(response => response.json())
@@ -103,7 +110,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     synonymsField.innerText = data.synonyms && data.synonyms.length > 0 ? data.synonyms.join(', ') : "No synonyms found.";
                     antonymsField.innerText = data.antonyms && data.antonyms.length > 0 ? data.antonyms.join(', ') : "No antonyms found.";
                 })
-                .catch(error => { console.error("Error fetching thesaurus:", error); synonymsField.innerText = "Could not fetch synonyms."; antonymsField.innerText = "Could not fetch antonyms."; });
+
+            fetch(rhymeURL, fetchOptions)
+                .then(response => response.json())
+                .then(data => {
+                    // This is where the corrected typo is:
+                    rhymesField.innerText = data.length > 0 ? data.join(', ') : "No rhymes found.";
+                })
+
+                .catch(error => { 
+                    console.error("Error fetching thesaurus:", error); 
+                    synonymsField.innerText = "Could not fetch synonyms."; 
+                    antonymsField.innerText = "Could not fetch antonyms."; 
+                    }
+                );
         }
 
         function fetchRandomWord() {
@@ -115,7 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     keywordInput.value = randomWord;
                     handleSearch(randomWord);
                 })
-                .catch(error => { console.error("Error fetching random word:", error); keywordInput.value = ""; definitionField.innerText = "Could not fetch a random word."; synonymsField.innerText = ""; antonymsField.innerText = ""; });
+                .catch(error => { 
+                    console.error("Error fetching random word:", error); 
+                    keywordInput.value = ""; 
+                    definitionField.innerText = "Could not fetch a random word."; 
+                    synonymsField.innerText = ""; 
+                    antonymsField.innerText = ""; 
+                });
         }
         
         // Add event listeners for the main page buttons
