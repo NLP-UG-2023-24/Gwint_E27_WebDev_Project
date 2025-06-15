@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- API Configuration ---
     // CRITICAL: This key is exposed. Generate a new key and hide it using a serverless function before deploying your site.
-    const APINinjasKey = "cXRL+1hx7MFwH/CcnJNt6w==ifTKw1ZncXBSDZ7Q";
+    const APINinjasKey = "YOUR_NEW_SECRET_KEY_GOES_HERE";
     const apiBaseURL = "https://api.api-ninjas.com/v1/";
 
     // =========================================================================
