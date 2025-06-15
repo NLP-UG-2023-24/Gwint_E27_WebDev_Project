@@ -33,11 +33,20 @@
     </header>
 
     <main>
+        <div class="hero-section">
+            <h1>Explore the World of Words</h1>
+            <p>Your complete language companion. Get instant definitions, synonyms, antonyms, and rhymes.</p>
+        </div>
+
         <form id="word-form">
             <input type="text" id="keyword" placeholder="Enter a word">
             <button type="button" id="search_button">Search</button>
             <button type="button" id="random_button">Random</button>
         </form>
+        
+        <div id="word-display-container" class="word-display">
+            </div>
+
         <div class="container">
             <section class="results_header"><h2>Definition</h2></section>
             <section class="results"><p id="definition">Enter a word above and click "Search" to see its definition.</p></section>
@@ -47,12 +56,6 @@
             <section class="results"><p id="antonyms">Antonyms will appear here.</p></section>
             <section class="results_header"><h2>Rhymes</h2></section>
             <section class="results"><p id="rhymes">Rhymes will appear here.</p></section>
-        </div>
-        <div class="about_container">
-            <section id="about">
-                <h2>About Word Checker</h2>
-                <p>Word Checker is a simple and user-friendly tool designed to help you explore the English language. Whether you're looking for definitions, synonyms, or antonyms, we've got you covered. Perfect for writers, students, and anyone looking to expand their vocabulary!</p>
-            </section>
         </div>
     </main>
 
