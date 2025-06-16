@@ -122,30 +122,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function fetchRandomWord() {
-            keywordInput.value = "Getting a random word...";
-            const randomWordURL = `${apiBaseURL}randomword`;
+    keywordInput.value = "Getting a random word...";
+    const fallbackWords = ["sky", "dream", "machine", "explore", "peace"];
 
-            fetch(randomWordURL, fetchOptions)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`API error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const randomWord = data.word;
-                    keywordInput.value = randomWord;
-                    handleSearch(randomWord);
-                })
-                .catch(error => { 
-                    console.error("Error fetching random word:", error); 
-                    keywordInput.value = ""; 
-                    definitionField.innerText = "Could not fetch a random word."; 
-                    synonymsField.innerText = ""; 
-                    antonymsField.innerText = ""; 
-                    rhymesField.innerText = "";
-                });
-        }
+    fetch('https://random-word-api.herokuapp.com/word?number=1')
+        .then(res => {
+            if (!res.ok) throw new Error(`Error: ${res.status}`);
+            return res.json();
+        })
+        .then(data => {
+            const word = data[0];
+            keywordInput.value = word;
+            handleSearch(word);
+        })
+        .catch(error => {
+            console.error("Random word API error:", error.message);
+            const fallback = fallbackWords[Math.floor(Math.random() * fallbackWords.length)];
+            keywordInput.value = fallback;
+            handleSearch(fallback);
+        });
+}
         
         searchButton.addEventListener("click", () => handleSearch(keywordInput.value));
         randomButton.addEventListener("click", fetchRandomWord);
