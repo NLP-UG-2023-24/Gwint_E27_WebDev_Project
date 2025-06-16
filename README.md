@@ -1,12 +1,7 @@
-# Gwint_E27_WebDev_Project
-The aim of this project is to create an application!
+## Gwint_E27_WebDev_Project
 
-## Running the project
+#Word Checker
 
-To run the project navigate to its root directory in your terminal and run following command:
-
-```bash
-python3 -m http.server
-```
-
-Then open your browser and visit `http://localhost:8000`
+In a world full of information, clarity is key. Word Checker was created with a simple mission: to make language exploration easy and accessible for everyone. We believe that a deeper understanding of words enriches communication, sparks creativity, and empowers learning.
+Whether you're a student striving for academic excellence, a writer perfecting your craft, an English language learner building confidence, or simply a curious mind, our tool is designed for you.
+           
